@@ -1,0 +1,22 @@
+# Пример настроек для конкретного проекта.
+# Переопределяет глобальный config.yaml только для папки projects/example.
+
+transition_duration: 0.6
+
+# Обрезка отдельных клипов перед склейкой (необязательно).
+# file — имя файла внутри clips/, start/end — секунды.
+trim:
+  - file: 01_intro.mp4
+    start: 2
+    end: 12
+
+avatar:
+  position: bottom-right
+  width_ratio: 0.25
+
+# Текстовые подписи поверх готового ролика.
+captions:
+  - text: "Подпишись, если полезно!"
+    start: 1
+    duration: 3
+    position: bottom
