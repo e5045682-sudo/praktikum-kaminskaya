@@ -15,8 +15,11 @@ avatar:
   width_ratio: 0.25
 
 # Текстовые подписи поверх готового ролика.
-captions:
-  - text: "Подпишись, если полезно!"
-    start: 1
-    duration: 3
-    position: bottom
+# ВАЖНО: для этой функции нужен установленный ImageMagick
+# (https://imagemagick.org/script/download.php). Если его нет — не
+# раскомментируйте секцию ниже, монтаж пройдёт и без подписей.
+# captions:
+#   - text: "Подпишись, если полезно!"
+#     start: 1
+#     duration: 3
+#     position: bottom

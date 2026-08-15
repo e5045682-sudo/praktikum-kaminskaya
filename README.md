@@ -57,7 +57,7 @@ projects/
 | `fps` | частота кадров результата |
 | `music_volume` | громкость фоновой музыки, 0.0–1.0 |
 | `font` | путь к `.ttf` шрифту для подписей (если не задан — берётся системный) |
-| `captions` | список подписей: `{text, start, duration, position, font_size, color}` |
+| `captions` | список подписей: `{text, start, duration, position, font_size, color}`. Требует установленного [ImageMagick](https://imagemagick.org/script/download.php) — без него не используйте эту секцию |
 | `avatar.position` | угол размещения: `top-left`, `top-right`, `bottom-left`, `bottom-right` |
 | `avatar.width_ratio` | ширина аватара относительно ширины видео |
 | `avatar.margin` | отступ от края кадра, px |
