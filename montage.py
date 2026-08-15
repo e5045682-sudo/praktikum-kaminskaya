@@ -17,6 +17,8 @@ config.yaml нужно убрать.
     python montage.py --project projects/example
     python montage.py --all
 """
+from __future__ import annotations
+
 import argparse
 import sys
 from pathlib import Path
