@@ -115,21 +115,24 @@ def resolve_font(config: dict) -> str:
     )
 
 
-def apply_trim(clip: VideoFileClip, trim_cfg: dict | None) -> VideoFileClip:
-    if not trim_cfg:
-        return clip
-    start = trim_cfg.get("start", 0)
-    end = trim_cfg.get("end", clip.duration)
-    return clip.subclip(start, end)
-
-
 def build_main_sequence(clip_paths: list[Path], config: dict) -> VideoFileClip:
-    trims = {t["file"]: t for t in config.get("trim", [])}
+    trims_by_file: dict[str, list[dict]] = {}
+    for t in config.get("trim", []):
+        trims_by_file.setdefault(t["file"], []).append(t)
+
     raw_clips = []
     for path in clip_paths:
-        clip = VideoFileClip(str(path))
-        clip = apply_trim(clip, trims.get(path.name))
-        raw_clips.append(clip)
+        file_trims = trims_by_file.get(path.name)
+        if file_trims:
+            # несколько отрезков из одного файла — каждый становится
+            # отдельным куском в итоговой склейке, в указанном порядке
+            for t in file_trims:
+                clip = VideoFileClip(str(path))
+                start = t.get("start", 0)
+                end = t.get("end", clip.duration)
+                raw_clips.append(clip.subclip(start, end))
+        else:
+            raw_clips.append(VideoFileClip(str(path)))
 
     duration = config.get("transition_duration", 0)
     if not duration or len(raw_clips) == 1:
