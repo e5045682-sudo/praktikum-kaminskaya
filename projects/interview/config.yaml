@@ -8,39 +8,47 @@ trim:
   - file: GMT20260813-091727_Recording_640x360.mp4
     start: 926
     end: 1103
+    label: 01_smehoterapiya
     # 00:15:26–00:18:23 — техника «смехотерапии»
 
   - file: GMT20260813-091727_Recording_640x360.mp4
     start: 3334
     end: 3386
+    label: 02_otziv_otverzhennost
     # 00:55:34–00:56:26 — отзыв: проработала страх отверженности
 
   - file: GMT20260813-091727_Recording_640x360.mp4
     start: 4159
     end: 4220
+    label: 03_nado_hochu
     # 01:09:19–01:10:20 — инсайт про «надо/должна»
 
   - file: GMT20260813-091727_Recording_640x360.mp4
     start: 4501
     end: 4720
+    label: 04_kontrol_lubov_svoboda
     # 01:15:01–01:18:40 — метафора: контроль путают с любовью/свободой
 
   - file: GMT20260813-091727_Recording_640x360.mp4
     start: 4829
     end: 4901
+    label: 05_kak_babushka
     # 01:20:29–01:21:41 — паттерн «стала как бабушка, хоть и не хотела»
 
   - file: GMT20260813-091727_Recording_640x360.mp4
     start: 7416
     end: 7460
+    label: 06_smeh_iscelenie
     # 02:03:36–02:04:20 — «смех — это исцеление»
 
   - file: GMT20260813-091727_Recording_640x360.mp4
     start: 7714
     end: 7881
+    label: 07_regressiya_samosostradanie
     # 02:08:34–02:11:21 — регрессия в детство, самосострадание
 
   - file: GMT20260813-091727_Recording_640x360.mp4
     start: 8706
     end: 8789
+    label: 08_tumbler_kontrolya
     # 02:25:06–02:26:29 — «тумблер» контроля, баланс, а не подавление
