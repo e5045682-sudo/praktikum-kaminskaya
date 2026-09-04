@@ -19,6 +19,34 @@
    pip install -r requirements.txt
    ```
 
+3. Для текстовых подписей (`captions` в config.yaml) дополнительно нужен
+   ImageMagick:
+   - Ubuntu/Debian: `sudo apt-get install imagemagick`
+   - macOS: `brew install imagemagick`
+   - Windows: скачайте установщик с
+     [imagemagick.org](https://imagemagick.org/script/download.php#windows)
+     (сборка `Q16-HDRI-x64-dll`). При установке обязательно включите галочки
+     **"Install legacy utilities (e.g. convert)"** и **"Add application
+     directory to your system path"**.
+
+     На Windows есть нюанс: команда `convert` уже занята системной утилитой
+     `C:\Windows\System32\convert.exe` (конвертация FAT→NTFS), поэтому
+     MoviePy может найти не тот `convert` и подписи не сработают (ошибка
+     вида `invalid drive specification` или что convert "не авторизован").
+     Чтобы точно указать MoviePy на ImageMagick, задайте переменную
+     окружения `IMAGEMAGICK_BINARY` с полным путём к `magick.exe`:
+     ```bat
+     setx IMAGEMAGICK_BINARY "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"
+     ```
+     (путь и версия — под вашу установку; после `setx` перезапустите
+     терминал/IDE, чтобы переменная подхватилась).
+
+     На Linux при ошибке `convert-im6.q16: not authorized` откройте
+     `/etc/ImageMagick-6/policy.xml` и закомментируйте или смягчите строку
+     `<policy domain="path" rights="none" pattern="@*"/>` — по умолчанию
+     ImageMagick запрещает читать текстовые файлы через `@`, что и
+     использует MoviePy для подписей.
+
 ## Структура проекта
 
 Каждый ролик — это папка внутри `projects/`:
