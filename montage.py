@@ -254,6 +254,23 @@ def render_project(project_dir: Path, output_dir: Path, base_config: dict):
     print(f"Готово: {output_path}")
 
 
+def load_base_config(root_config_path: Path = Path("config.yaml")) -> dict:
+    """Глобальные настройки по умолчанию + переопределения из config.yaml в корне.
+
+    Вынесено из main(), чтобы этой же логикой могли пользоваться другие
+    точки входа (например orchestrator.py), не дублируя её.
+    """
+    base_config = dict(DEFAULT_CONFIG)
+    base_config["avatar"] = dict(DEFAULT_CONFIG["avatar"])
+    if root_config_path.exists():
+        user_config = load_yaml(root_config_path)
+        avatar_override = user_config.pop("avatar", None)
+        base_config.update(user_config)
+        if avatar_override:
+            base_config["avatar"].update(avatar_override)
+    return base_config
+
+
 def main():
     parser = argparse.ArgumentParser(description="Автоматический монтаж видеороликов")
     parser.add_argument("--project", type=Path, help="Путь к одному проекту (папке с клипами)")
@@ -262,15 +279,7 @@ def main():
     parser.add_argument("--all", action="store_true", help="Обработать все проекты в --projects-dir")
     args = parser.parse_args()
 
-    base_config = dict(DEFAULT_CONFIG)
-    base_config["avatar"] = dict(DEFAULT_CONFIG["avatar"])
-    root_config_path = Path("config.yaml")
-    if root_config_path.exists():
-        user_config = load_yaml(root_config_path)
-        avatar_override = user_config.pop("avatar", None)
-        base_config.update(user_config)
-        if avatar_override:
-            base_config["avatar"].update(avatar_override)
+    base_config = load_base_config()
 
     if args.all:
         if not args.projects_dir.is_dir():

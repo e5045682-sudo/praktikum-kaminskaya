@@ -13,3 +13,9 @@ avatar:
   position: bottom-right   # top-left | top-right | bottom-left | bottom-right
   width_ratio: 0.28        # ширина аватара относительно ширины видео
   margin: 24                # отступ от края кадра, px
+
+# Команда агентов orchestrator.py и порядок их запуска для проекта.
+# Можно переопределить внутри projects/<name>/config.yaml.
+# Доступные агенты: montage, highlights, beautify, qa. По умолчанию
+# (если поле не задано) запускаются только montage и qa.
+# pipeline: [montage, qa]
