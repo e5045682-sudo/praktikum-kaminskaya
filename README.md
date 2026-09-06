@@ -76,3 +76,37 @@ python montage.py --all
 
 Готовые ролики сохраняются в `output/<имя_проекта>.mp4`. Путь к папкам
 можно поменять флагами `--projects-dir` и `--output-dir`.
+
+## Оркестратор: команда агентов (orchestrator.py)
+
+`montage.py` делает только монтаж. `orchestrator.py` — это дирижёр, который
+управляет всей командой скриптов как отдельными агентами и передаёт
+результат одного этапа следующему:
+
+| Агент | Роль |
+|---|---|
+| `montage` | склеивает клипы, хук, аватар, подписи и музыку (обёртка над `montage.py`) |
+| `highlights` | экспортирует отрезки из `trim` в config.yaml отдельными файлами (обёртка над `export_highlights.py`) |
+| `beautify` | сглаживает кожу на лице — самый тяжёлый этап, выключен по умолчанию (обёртка над `beautify.py`) |
+| `qa` | проверяет, что файлы из предыдущих этапов реально появились и не пустые |
+
+По умолчанию для проекта выполняются `montage` и `qa`. Порядок и состав
+команды для конкретного проекта задаётся полем `pipeline` в
+`projects/<name>/config.yaml`:
+
+```yaml
+pipeline: [montage, beautify, qa]
+```
+
+Если какой-то агент в цепочке падает с ошибкой (например нет исходных
+файлов), оркестратор не прерывает весь проект — он запоминает
+предупреждение, передаёт управление дальше по цепочке и в конце
+выводит общий отчёт по всем проектам.
+
+Запуск:
+```bash
+python orchestrator.py --project projects/my_video
+python orchestrator.py --all
+python orchestrator.py --project projects/my_video --only montage,qa
+python orchestrator.py --project projects/my_video --skip beautify
+```
