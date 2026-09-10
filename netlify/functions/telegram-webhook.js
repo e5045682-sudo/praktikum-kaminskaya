@@ -7,9 +7,9 @@
 //   ANTHROPIC_API_KEY    — Claude API key (console.anthropic.com -> API Keys)
 //
 // The sales script lives in a public Google Doc (edit it any time — no redeploy needed):
-//   https://docs.google.com/document/d/1AytVKZEv10NomGitUxKZZfUKLggFYtYHUe4H5cwl1OA/edit
+//   https://docs.google.com/document/d/1CLNgI1qkDGfn7VAmxitI0HLzGnEcFSK18CLk96LLRUo/edit
 
-const INSTRUCTIONS_URL = 'https://docs.google.com/document/d/1AytVKZEv10NomGitUxKZZfUKLggFYtYHUe4H5cwl1OA/export?format=txt';
+const INSTRUCTIONS_URL = 'https://docs.google.com/document/d/1CLNgI1qkDGfn7VAmxitI0HLzGnEcFSK18CLk96LLRUo/export?format=txt';
 
 const FALLBACK_INSTRUCTIONS = 'Скрипт временно недоступен. Отвечай кратко и вежливо, скажи что передашь вопрос Елене лично.';
 
