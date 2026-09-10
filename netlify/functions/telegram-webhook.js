@@ -1,23 +1,44 @@
-// Telegram sales bot webhook — no external dependencies, runs on Netlify Functions (Node 18+ runtime).
+// Telegram sales bot webhook — AI-driven, reads live instructions from a public Google Doc on every message.
+// Runs on Netlify Functions (Node 18+ runtime), no external npm dependencies.
 //
-// Env vars required (set in Netlify site settings -> Environment variables):
-//   TELEGRAM_BOT_TOKEN — token from @BotFather
-//   ELENA_CHAT_ID       — Elena's numeric Telegram chat id (get it by messaging @userinfobot)
+// Env vars required (Netlify site settings -> Environment variables):
+//   TELEGRAM_BOT_TOKEN  — token from @BotFather
+//   ELENA_CHAT_ID        — Elena's numeric Telegram chat id (from @userinfobot)
+//   ANTHROPIC_API_KEY    — Claude API key (console.anthropic.com -> API Keys)
 //
-// After deploy, register the webhook once by visiting in a browser:
-//   https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://<your-site>.netlify.app/.netlify/functions/telegram-webhook
+// The sales script lives in a public Google Doc (edit it any time — no redeploy needed):
+//   https://docs.google.com/document/d/1AytVKZEv10NomGitUxKZZfUKLggFYtYHUe4H5cwl1OA/edit
 
-const CODEWORDS = ['ПРАКТИКУМ', 'ДИАГНОСТИКА', 'СИСТЕМА'];
+const INSTRUCTIONS_URL = 'https://docs.google.com/document/d/1AytVKZEv10NomGitUxKZZfUKLggFYtYHUe4H5cwl1OA/export?format=txt';
 
-const PITCH = `Здравствуйте! Расскажу коротко и по делу.
+const FALLBACK_INSTRUCTIONS = 'Скрипт временно недоступен. Отвечай кратко и вежливо, скажи что передашь вопрос Елене лично.';
 
-Практикум по системному мышлению — 14–16 сентября, 19:00 по Казахстану, 3 онлайн-вечера, 9 990 ₸.
+async function fetchInstructions() {
+  try {
+    const r = await fetch(INSTRUCTIONS_URL);
+    if (!r.ok) return FALLBACK_INSTRUCTIONS;
+    const t = await r.text();
+    return t && t.trim() ? t : FALLBACK_INSTRUCTIONS;
+  } catch {
+    return FALLBACK_INSTRUCTIONS;
+  }
+}
 
-Это для тех, кто застрял на месте — в личной ситуации, в работе с клиентами или в бизнесе — и хочет не очередную теорию, а разбор того, что конкретно повторяется у вас.
+function buildSystemPrompt(instructions) {
+  return `Ты — продажник практикума Елены Каминской «Системное мышление» (системные бизнес-расстановки), отвечаешь лидам в Telegram.
 
-Хотите записаться — напишите, пожалуйста, ваше имя и номер телефона, и я передам их Елене.`;
+Ведёшь диалог строго по инструкции ниже — она обновляется вживую, следуй именно ей, а не своим общим знаниям о продажах.
 
-const RELAY_CONFIRM = 'Спасибо! Передала ваше сообщение — Елена ответит вам лично.';
+Правила:
+- Отвечай по-русски, коротко (2–5 предложений), как в живой переписке — без markdown, без звёздочек, без списков.
+- Не начинай с цены — сначала диагностика по инструкции.
+- Никогда не обещай гарантированный результат.
+- Никогда не совмещай в одном сообщении обещание про личные изменения и про доход.
+- Если вопрос выходит за рамки инструкции, или ситуация нестандартная — прямо скажи, что передашь вопрос Елене лично, и не выдумывай ответ.
+
+--- ИНСТРУКЦИЯ (скрипт продаж) ---
+${instructions}`;
+}
 
 export default async (req) => {
   if (req.method !== 'POST') {
@@ -26,6 +47,7 @@ export default async (req) => {
 
   const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   const ELENA_CHAT_ID = process.env.ELENA_CHAT_ID;
+  const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
   if (!BOT_TOKEN) {
     return new Response('Missing TELEGRAM_BOT_TOKEN', { status: 500 });
@@ -45,8 +67,6 @@ export default async (req) => {
 
   const chatId = message.chat.id;
   const text = message.text.trim();
-  const textUpper = text.toUpperCase();
-  const matchedCodeword = CODEWORDS.find((w) => textUpper.includes(w));
 
   const apiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
@@ -58,19 +78,49 @@ export default async (req) => {
     });
   }
 
-  if (matchedCodeword) {
-    await send(chatId, PITCH);
-  } else {
-    const fromName = [message.from?.first_name, message.from?.last_name].filter(Boolean).join(' ') || 'Без имени';
-    const username = message.from?.username ? `@${message.from.username}` : 'без username';
-    if (ELENA_CHAT_ID) {
-      await send(
-        ELENA_CHAT_ID,
-        `Новое сообщение от ${fromName} (${username}, chat_id: ${chatId}):\n\n${text}`
-      );
-    }
-    await send(chatId, RELAY_CONFIRM);
+  const fromName = [message.from?.first_name, message.from?.last_name].filter(Boolean).join(' ') || 'Без имени';
+  const username = message.from?.username ? `@${message.from.username}` : 'без username';
+
+  if (ELENA_CHAT_ID) {
+    await send(
+      ELENA_CHAT_ID,
+      `Лид ${fromName} (${username}, chat_id: ${chatId}) написал:\n\n${text}`
+    );
   }
+
+  if (!ANTHROPIC_API_KEY) {
+    await send(chatId, 'Спасибо! Передала ваше сообщение — Елена ответит вам лично.');
+    return new Response('OK', { status: 200 });
+  }
+
+  const instructions = await fetchInstructions();
+  const systemPrompt = buildSystemPrompt(instructions);
+
+  let reply = 'Спасибо! Передала ваше сообщение — Елена ответит вам лично.';
+  try {
+    const aiResp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-5',
+        max_tokens: 400,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: text }],
+      }),
+    });
+    const data = await aiResp.json();
+    if (data && data.content && data.content[0] && data.content[0].text) {
+      reply = data.content[0].text;
+    }
+  } catch {
+    // keep fallback reply
+  }
+
+  await send(chatId, reply);
 
   return new Response('OK', { status: 200 });
 };
