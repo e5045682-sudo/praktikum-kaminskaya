@@ -1,0 +1,604 @@
+<title>Практикум системного мышления — Елена Каминская</title>
+<meta name="description" content="Практикум системного мышления с Еленой Каминской — 3 онлайн-вечера, 14–16 сентября, 19:00 по Казахстану. Системные бизнес-расстановки: находим точку, с которой начинаются изменения в бизнесе и жизни. Участие — 9 990 ₸.">
+<meta name="keywords" content="системные расстановки, бизнес-расстановки, Елена Каминская, практикум системного мышления, системный бизнес-расстановщик, Казахстан, бизнес-трекер, расстановки онлайн">
+<meta name="author" content="Елена Каминская">
+<link rel="canonical" href="https://e5045682-sudo.github.io/praktikum-kaminskaya/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Практикум системного мышления — Елена Каминская">
+<meta property="og:description" content="3 онлайн-вечера системных бизнес-расстановок. 14–16 сентября, 19:00 по Казахстану. Находим точку в системе, где застряло движение.">
+<meta property="og:url" content="https://e5045682-sudo.github.io/praktikum-kaminskaya/">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Практикум системного мышления — Елена Каминская">
+<meta name="twitter:description" content="3 онлайн-вечера системных бизнес-расстановок. 14–16 сентября, 19:00 по Казахстану.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Практикум системного мышления",
+  "description": "3 онлайн-вечера системных бизнес-расстановок с Еленой Каминской — находим точку, с которой можно начать менять повторяющийся сценарий в жизни или бизнесе.",
+  "startDate": "2026-09-14T19:00:00+05:00",
+  "endDate": "2026-09-16T21:00:00+05:00",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "VirtualLocation",
+    "url": "https://e5045682-sudo.github.io/praktikum-kaminskaya/"
+  },
+  "organizer": {
+    "@type": "Person",
+    "name": "Елена Каминская",
+    "url": "https://instagram.com/elena_rastanovki"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "9990",
+    "priceCurrency": "KZT",
+    "availability": "https://schema.org/InStock",
+    "url": "https://pay.kaspi.kz/pay/7uavnigb"
+  }
+}
+</script>
+<style>
+  :root {
+    --bg: #EFEEE8;
+    --surface: #E3E0D6;
+    --surface-2: #D9D5C8;
+    --text: #221F1B;
+    --text-dim: #6E685D;
+    --accent: #9C6D2E;
+    --accent-warm: #A2523B;
+    --line: rgba(34,31,27,0.16);
+    --line-strong: rgba(34,31,27,0.32);
+    --btn-text: #F5F2E9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #11141B;
+      --surface: #191E28;
+      --surface-2: #212736;
+      --text: #ECE8DD;
+      --text-dim: #9B9585;
+      --accent: #CDA35F;
+      --accent-warm: #CB7E64;
+      --line: rgba(236,232,221,0.14);
+      --line-strong: rgba(236,232,221,0.28);
+      --btn-text: #14171E;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #11141B;
+    --surface: #191E28;
+    --surface-2: #212736;
+    --text: #ECE8DD;
+    --text-dim: #9B9585;
+    --accent: #CDA35F;
+    --accent-warm: #CB7E64;
+    --line: rgba(236,232,221,0.14);
+    --line-strong: rgba(236,232,221,0.28);
+    --btn-text: #14171E;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Golos Text", "PT Sans", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  h1, h2, h3 {
+    font-family: "Unbounded", "PT Sans", Arial, sans-serif;
+    text-wrap: balance;
+    margin: 0;
+    font-weight: 600;
+  }
+  .mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  a { color: inherit; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .brand {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .navlinks { display: flex; gap: 28px; font-size: 14px; color: var(--text-dim); }
+  .navlinks a { text-decoration: none; }
+  .navlinks a:hover { color: var(--text); }
+  .navcta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--btn-text);
+    padding: 10px 16px;
+    border-radius: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) { .navlinks { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+  #stars { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.55; }
+  .hero-inner { position: relative; padding: 88px 0 72px; }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+  }
+  h1.headline {
+    font-size: clamp(34px, 5.2vw, 58px);
+    line-height: 1.08;
+    max-width: 15ch;
+    letter-spacing: -0.01em;
+  }
+  .sub {
+    margin-top: 22px;
+    max-width: 56ch;
+    font-size: 18px;
+    color: var(--text-dim);
+  }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 28px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-item .k { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+  .meta-item .v { font-family: "JetBrains Mono", monospace; font-size: 17px; }
+  .cta-row { margin-top: 36px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: "Unbounded", sans-serif;
+    font-size: 15px; font-weight: 500;
+    background: var(--accent);
+    color: var(--btn-text);
+    padding: 16px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .cta-note { font-size: 13px; color: var(--text-dim); }
+
+  /* ---------- section shell ---------- */
+  section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+  .section-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim);
+  }
+  h2.section-title { font-size: clamp(24px, 3vw, 32px); max-width: 20ch; }
+
+  /* ---------- audience cards ---------- */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 800px) { .audience-grid { grid-template-columns: 1fr; } }
+  .audience-card { background: var(--bg); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; }
+  .audience-card .tag { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-warm); }
+  .audience-card h3 { font-size: 19px; line-height: 1.3; }
+  .audience-card p { font-size: 14.5px; color: var(--text-dim); margin: 0; }
+
+  /* ---------- format / path ---------- */
+  .path { display: flex; flex-direction: column; }
+  .path-item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+  .path-item:last-child { border-bottom: 1px solid var(--line); }
+  .path-num { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); padding-top: 3px; }
+  .path-item h3 { font-size: 18px; margin-bottom: 8px; }
+  .path-item p { margin: 0; color: var(--text-dim); font-size: 14.5px; max-width: 58ch; }
+
+  /* ---------- speaker ---------- */
+  .speaker {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 640px) { .speaker { grid-template-columns: 1fr; } }
+  .speaker-mark {
+    width: 100%; aspect-ratio: 2 / 3;
+    border-radius: 3px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Unbounded", sans-serif;
+    font-size: 34px; color: var(--accent);
+  }
+  .speaker-body h3 { font-size: 22px; margin-bottom: 6px; }
+  .speaker-role { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; display: block; }
+  .speaker-body p { color: var(--text-dim); max-width: 60ch; margin: 0 0 12px; font-size: 15px; }
+
+  /* ---------- pricing / final cta ---------- */
+  .price-box {
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    padding: 44px;
+    display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;
+  }
+  .price-box .amount { font-family: "Unbounded", sans-serif; font-size: 40px; }
+  .price-box .amount .cur { font-size: 22px; color: var(--text-dim); }
+  .price-box .dates { font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--text-dim); margin-top: 8px; }
+
+  /* ---------- reviews ---------- */
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 900px) { .review-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .review-grid { grid-template-columns: 1fr; } }
+  .review-card { background: var(--bg); padding: 28px 26px; display: flex; flex-direction: column; gap: 14px; }
+  .review-stars { font-family: "JetBrains Mono", monospace; font-size: 13px; letter-spacing: 0.1em; color: var(--accent); }
+  .review-card p { margin: 0; font-size: 14px; color: var(--text-dim); flex: 1; }
+  .review-who { font-size: 13px; }
+  .review-who .name { color: var(--text); }
+  .review-who .stream { color: var(--text-dim); font-size: 12px; }
+
+  /* ---------- next step ---------- */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (max-width: 720px) { .next-grid { grid-template-columns: 1fr; } }
+  .next-card { background: var(--bg); padding: 32px 28px; display: flex; flex-direction: column; gap: 12px; }
+  .next-card .tag { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-warm); }
+  .next-card h3 { font-size: 19px; line-height: 1.3; }
+  .next-card p { font-size: 14.5px; color: var(--text-dim); margin: 0; flex: 1; }
+  .next-card ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; color: var(--text-dim); }
+  .next-card li { margin: 4px 0; }
+  .next-card .btn-primary { align-self: flex-start; margin-top: 6px; padding: 12px 20px; font-size: 14px; }
+
+  footer { padding: 44px 0 60px; }
+  .foot-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: flex-end; }
+  .foot-note { font-size: 12.5px; color: var(--text-dim); max-width: 46ch; line-height: 1.6; }
+  .foot-handle { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--text-dim); text-decoration: none; }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;600;700;900&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">ЕЛЕНА КАМИНСКАЯ</a>
+    <div class="navlinks">
+      <a href="#dlya-kogo">Для кого</a>
+      <a href="#format">Формат</a>
+      <a href="#spiker">Ведущая</a>
+      <a href="#otzyvy">Отзывы</a>
+      <a href="#zapis">Практикум</a>
+    </div>
+    <a class="navcta" href="#zapis">9 990 ₸ →</a>
+  </div>
+</nav>
+
+<div class="hero" id="top">
+  <canvas id="stars"></canvas>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Практикум · системное мышление</div>
+    <h1 class="headline">То, что повторяется в вашей жизни — не случайность</h1>
+    <p class="sub">3 онлайн-вечера с Еленой Каминской. Не очередная теория сверху, а разбор того, что конкретно происходит у вас — в отношениях, в работе, в бизнесе — и где точка, с которой можно начать менять сценарий.</p>
+
+    <div class="cta-row">
+      <a class="btn-primary" href="https://pay.kaspi.kz/pay/7uavnigb" target="_blank" rel="noopener">Оплатить участие через Kaspi</a>
+      <a class="btn-primary" style="background:transparent;border:1px solid var(--line-strong);color:var(--text);" href="https://instagram.com/elena_rastanovki" target="_blank" rel="noopener">Написать в Директ</a>
+    </div>
+    <p class="cta-note" style="margin-top:12px;">После оплаты пришлите скрин в Директ — пришлём ссылку на вечер</p>
+
+    <div class="meta-row">
+      <div class="meta-item"><span class="k">Даты</span><span class="v mono">14–16 сентября</span></div>
+      <div class="meta-item"><span class="k">Время</span><span class="v mono">19:00 · Казахстан</span></div>
+      <div class="meta-item"><span class="k">Формат</span><span class="v mono">Онлайн, 3 вечера</span></div>
+      <div class="meta-item"><span class="k">Участие</span><span class="v mono">9 990 ₸</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="dlya-kogo">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Для кого это</div>
+        <h2 class="section-title">Три разных запроса — один и тот же принцип</h2>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="tag">Личный запрос</span>
+        <h3>Застряли на месте — и не первый год</h3>
+        <p>Понимаете проблему умом, но на практике ничего не меняется. Смотрим, что здесь происходит на самом деле, а не только что вы об этом думаете.</p>
+      </div>
+      <div class="audience-card">
+        <span class="tag">Специалист / коуч</span>
+        <h3>Клиенты возвращаются с тем же самым</h3>
+        <p>Не ещё один диплом. Разбираем конкретный алгоритм: что делать, когда клиент застревает, а привычные методы не двигают ситуацию дальше.</p>
+      </div>
+      <div class="audience-card">
+        <span class="tag">Предприниматель</span>
+        <h3>Стратегия на бумаге не работает в жизни</h3>
+        <p>Меняли стратегию, меняли людей — результат тот же. Смотрим, где именно ломается система: у вас, в команде или в самой модели бизнеса.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="format">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Формат</div>
+        <h2 class="section-title">Три вечера, один и тот же вопрос — «что здесь на самом деле происходит»</h2>
+      </div>
+    </div>
+    <div class="path">
+      <div class="path-item">
+        <div class="path-num mono">01</div>
+        <div>
+          <h3>Факт, а не интерпретация</h3>
+          <p>Учимся отделять то, что произошло на самом деле, от истории, которую мы об этом рассказываем себе. Без этого различия любая работа с ситуацией буксует.</p>
+        </div>
+      </div>
+      <div class="path-item">
+        <div class="path-num mono">02</div>
+        <div>
+          <h3>Место в системе</h3>
+          <p>Смотрим, какое место вы занимаете в своей системе — семье, команде, бизнесе — и как это место объясняет то, что раньше казалось «просто так сложилось».</p>
+        </div>
+      </div>
+      <div class="path-item">
+        <div class="path-num mono">03</div>
+        <div>
+          <h3>Точка вмешательства</h3>
+          <p>Не план на десять шагов вперёд, а один конкретный следующий шаг — то, с чего реально можно начать менять сценарий, который повторяется.</p>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 28px; font-size: 14px; color: var(--text-dim); max-width: 56ch;">Без готовых рецептов и без обещаний волшебного результата за три вечера — честно скажем, что практикум может, а что нет.</p>
+  </div>
+</section>
+
+<section id="spiker">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Ведущая</div>
+        <h2 class="section-title">Кто ведёт практикум</h2>
+      </div>
+    </div>
+    <div class="speaker">
+      <div class="speaker-mark"><img src="data:image/jpeg;base64,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" alt="Елена Каминская" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div class="speaker-body">
+        <h3>Елена Каминская</h3>
+        <span class="speaker-role">Бизнес-трекер · системный бизнес-расстановщик</span>
+        <p>Работает с личными и бизнес-запросами там, где важно увидеть не симптом, а то, что стоит за повторяющимся сценарием — в отношениях, в команде, в решениях, которые почему-то раз за разом приводят к одному и тому же месту.</p>
+        <p>На практикуме — тот же принцип, которым Елена пользуется на индивидуальной работе, но в формате, доступном сразу многим: смотреть на систему целиком, а не чинить один симптом отдельно от контекста.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="otzyvy">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Отзывы</div>
+        <h2 class="section-title">Что говорят те, кто уже проходил расстановки с Еленой</h2>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>Благодаря расстановке муж закрыл кредиты, которые были оформлены на меня — на сумму 1 400 000 тенге.</p>
+        <div class="review-who"><span class="name">Татьяна, ментор</span> · <span class="stream">ученица 1 потока</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>Родовые расстановки — это фантастика. Вечером поработали — результат уже на утро. После того как я заняла своё место жены — муж резко изменился: сам делает завтрак, возит по моим делам.</p>
+        <div class="review-who"><span class="name">Анна</span> · <span class="stream">ученица 5 потока</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>Заметила очень хорошие изменения у моей младшей дочери — стала больше говорить, поведение улучшилось. Старшая дочь начала со мной делиться, потихоньку открываться. И сегодня сама делала расстановку клиенту — запрос полностью закрыт.</p>
+        <div class="review-who"><span class="name">Гульнара</span> · <span class="stream">ученица 1 потока</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>У меня совсем не было энергии, апатия. Но когда очередной урок начинался — внутри такой ресурс просыпался, я до двух ночи не спала. Когда просто поставила две фигуры — пришла информация, что мне каждый день даётся огромный ресурс, а я его не использую.</p>
+        <div class="review-who"><span class="name">Т.А.</span> · <span class="stream">ученица 1 потока</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>Муж продавал машину — все приезжали и хотели дёшево. Утром осознала — это я стою за помехой, потому что нет уверенности, что это правильное решение. Отпустила ситуацию — муж звонит и говорит, что продал машину.</p>
+        <div class="review-who"><span class="name">Татьяна П.</span> · <span class="stream">ученица 1 потока</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>После разбора по фамилии сразу стрельнул квартирный вопрос — звонит риелтор, придут смотреть квартиру. Связь событий в поле была учтена сразу.</p>
+        <div class="review-who"><span class="name">Т.А.</span> · <span class="stream">ученица 1 потока</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dalshe">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Что дальше</div>
+        <h2 class="section-title">Для тех, кто захочет пойти глубже — путь к профессии расстановщика</h2>
+      </div>
+    </div>
+    <div class="next-grid">
+      <div class="next-card">
+        <span class="tag">Профессия · 1 ступень</span>
+        <h3>Расстановки: предназначение, деньги, отношения</h3>
+        <p>Предобучение методу — фундамент, без которого невозможно читать поле и проводить расстановки. Первый шаг к профессии системного расстановщика.</p>
+        <ul>
+          <li>Фундамент: чтение поля, базовые законы</li>
+          <li>Работа с родом, предназначением</li>
+          <li>Практика на собственных запросах</li>
+        </ul>
+        <a class="btn-primary" href="https://instagram.com/elena_rastanovki" target="_blank" rel="noopener">Узнать об обучении</a>
+      </div>
+      <div class="next-card">
+        <span class="tag">Бизнес · 9 недель</span>
+        <h3>Бизнес-расстановки</h3>
+        <p>Диагностика и работа с бизнес-системами через поле. Для предпринимателей и практиков, которые хотят зайти в бизнес-нишу профессионально.</p>
+        <ul>
+          <li>Диагностика за 15–20 минут</li>
+          <li>Роли, деньги, команда, масштаб</li>
+          <li>Маркетинговые расстановки</li>
+        </ul>
+        <a class="btn-primary" href="https://instagram.com/elena_rastanovki" target="_blank" rel="noopener">Узнать об обучении</a>
+      </div>
+    </div>
+    <p style="margin-top: 24px; font-size: 13px; color: var(--text-dim);">Формат и условия — индивидуально, после бесплатной диагностики. Практикум — хороший первый шаг перед этим.</p>
+  </div>
+</section>
+
+<section id="zapis" style="border-bottom: none;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Участие</div>
+        <h2 class="section-title">Записаться на практикум</h2>
+      </div>
+    </div>
+    <div class="price-box">
+      <div>
+        <div class="amount">9 990 <span class="cur">₸</span></div>
+        <div class="dates">14–16 сентября · 19:00 по Казахстану · 3 онлайн-вечера</div>
+      </div>
+      <a class="btn-primary" href="https://pay.kaspi.kz/pay/7uavnigb" target="_blank" rel="noopener">Оплатить через Kaspi</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <p class="foot-note">Практикум — образовательный формат работы с системным мышлением. Не является психологической, медицинской или психотерапевтической услугой и не заменяет их.</p>
+    <a class="foot-handle" href="https://instagram.com/elena_rastanovki" target="_blank" rel="noopener">@elena_rastanovki</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var canvas = document.getElementById('stars');
+  if (!canvas) return;
+  var hero = canvas.parentElement;
+  var ctx = canvas.getContext('2d');
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function getAccent() {
+    var v = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+    return v || '#C9A15E';
+  }
+  function getLine() {
+    var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var explicit = document.documentElement.getAttribute('data-theme');
+    var dark = explicit ? explicit === 'dark' : isDark;
+    return dark ? 'rgba(236,232,221,' : 'rgba(34,31,27,';
+  }
+
+  function seeded(seed) {
+    var s = seed;
+    return function () {
+      s = (s * 9301 + 49297) % 233280;
+      return s / 233280;
+    };
+  }
+
+  function draw() {
+    var w = hero.clientWidth, h = hero.clientHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    var rand = seeded(42);
+    var count = Math.max(26, Math.floor(w / 42));
+    var pts = [];
+    for (var i = 0; i < count; i++) {
+      pts.push({ x: rand() * w, y: rand() * h, r: 1 + rand() * 1.6 });
+    }
+
+    var lineBase = getLine();
+    ctx.lineWidth = 1;
+    for (var i = 0; i < pts.length; i++) {
+      for (var j = i + 1; j < pts.length; j++) {
+        var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          var alpha = (1 - dist / 150) * 0.35;
+          ctx.strokeStyle = lineBase + alpha + ')';
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    var accent = getAccent();
+    for (var i = 0; i < pts.length; i++) {
+      ctx.fillStyle = accent;
+      ctx.globalAlpha = 0.75;
+      ctx.beginPath();
+      ctx.arc(pts[i].x, pts[i].y, pts[i].r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  draw();
+  window.addEventListener('resize', draw);
+})();
+</script>
